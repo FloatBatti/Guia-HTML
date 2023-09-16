@@ -1,44 +1,49 @@
-p.parrafo{ /* Se agrega a todos los elementos HTML que tengan la clase parrafo y sean de tipo p */
-    color:#F1EFDC;
+p.parrafo {
+    /* Se agrega a todos los elementos HTML que tengan la clase parrafo y sean de tipo p */
+    color: #F1EFDC;
     font-family: 'Roboto';
-    font-size: 15px; 
-    background-color: #42855B;    
+    font-size: 15px;
+    background-color: #42855B;
     padding: 15px;
     border: 10px solid #483838;
     margin: 25px 200px 45px 15px;
-    text-align: center;   
+    text-align: center;
 }
 
-body{ 
+body {
 
     background-color: #D2D79F;
 }
 
-h1{ /* Se agrega a todos los elementos HTML que sean de tipo h1 */
+h1 {
+    /* Se agrega a todos los elementos HTML que sean de tipo h1 */
 
     color: #42032C;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     text-align: center;
 }
 
 
-a:link{ /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado link, es decir, que no se han visitado */
+a:link {
+    /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado link, es decir, que no se han visitado */
 
-    color:#D36B00;
-    font-family:'Roboto';
+    color: #D36B00;
+    font-family: 'Roboto';
     font-size: 25px;
     text-decoration: none;
 }
 
-a:visited{ /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado visited */
+a:visited {
+    /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado visited */
 
-    color:#1024d8;
-    font-family:'Roboto';
+    color: #1024d8;
+    font-family: 'Roboto';
     text-decoration: none;
 }
 
 
-a:hover{ /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado hover */
+a:hover {
+    /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado hover */
 
     color: #42032C;
     text-decoration: underline;
@@ -47,12 +52,16 @@ a:hover{ /* Se agrega a todos los elementos HTML que sean de tipo a y estén en 
 }
 
 
-a:active{ /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado active, es decir, cuando se hace click */
-    color:#A10035;
-    
+a:active {
+    /* Se agrega a todos los elementos HTML que sean de tipo a y estén en estado active, es decir, cuando se hace click */
+    color: #A10035;
+
 }
 
-table, th, td{ /* Se agrega a todos los elementos HTML que sean de tipo table, th y td */
+table,
+th,
+td {
+    /* Se agrega a todos los elementos HTML que sean de tipo table, th y td */
 
     border: 3px solid black;
     text-align: center;
@@ -61,34 +70,37 @@ table, th, td{ /* Se agrega a todos los elementos HTML que sean de tipo table, t
 
 }
 
-table{
+table {
 
     width: 100%;
 }
 
-caption{
+caption {
 
     color: crimson;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     font-size: 25px;
     line-height: 45px;
-    
+
 }
 
-th{
+th {
 
     color: white;
     background-color: darkblue;
 }
 
-tr:nth-child(even){ /* Se agrega a todos los elementos HTML que sean de tipo tr y sean pares */
+tr:nth-child(even) {
+    /* nth-child(n) es una pseudoclase que permite seleccionar el elemento que ocupa la posición n dentro de su padre */
+    /* Con even se agrega a todos los elementos HTML que sean de tipo tr y sean pares */
 
     background-color: #f1faee;
-    
+
 }
 
-tr:nth-child(odd){ /* Se agrega a todos los elementos HTML que sean de tipo tr y sean impares */
-                    /* nth-child(n) es una pseudoclase que permite seleccionar el elemento que ocupa la posición n dentro de su padre */
+tr:nth-child(odd) {
+    /* Con odd se agrega a todos los elementos HTML que sean de tipo tr y sean impares */
+
 
     background-color: #a8dadc;
 
@@ -108,56 +120,222 @@ ol li{  Se agrega a todos los elementos HTML que sean de tipo li y estén dentro
 
 /* Before y after son pseudoelementos que permiten agregar contenido antes o después de un elemento HTML */
 
-ol li::before{ 
-    
+ol li::before {
+
     content: "*- " counter(contador) ") ";
 }
 
-ol li::after{
+ol li::after {
 
     content: " -*";
 }
 
-ul.barraInicio{
+ul.barraInicio {
     list-style-type: none;
     background-color: #457b9d;
     overflow: hidden;
     padding: 20px;
 }
 
-li.elementoInicio{
+li.elementoInicio {
     float: left;
 }
 
-a.elementoInicio{
+a.elementoInicio {
     padding: 15px;
 }
 
-#bloqueDiv{ /* Se agrega a un solo elemento HTML */
+#bloqueDiv {
+    /* Se agrega a un solo elemento HTML */
 
     border: solid red;
     background-color: #a8dadc;
     font-family: monospace;
 }
 
-.marcoiFrame{ 
+.marcoiFrame {
 
     width: 100%;
     height: 400px;
     border: solid red 3px;
 }
 
-.botoniFrame{ 
+.botoniFrame {
 
     display: inline-block;
     margin-top: 15px;
     padding: 5px;
 }
 
-.tituloForm{ /* Se agrega a todos los elementos HTML que tengan la clase tituloForm */
+.tituloForm {
+    /* Se agrega a todos los elementos HTML que tengan la clase tituloForm */
 
     text-align: center;
     font-size: 40px;
     font-family: 'Roboto';
     text-decoration: underline rebeccapurple;
+}
+
+/*! Algunas medidas relativas */
+
+/* Las medidas relativas se calculan en base a la medida de otro elemento, puede ser em o rem */
+
+.contRelativo {
+    /* El contendor es el que define el valor del em. Si el contenedor tiene 10px, 1em equivale a10px */
+    font-size: 10px;
+}
+
+.relative {
+
+    /* 1 em equivale, generalmente, a 16px, se lo da el navegador. 5 em equivale a 80px. Sin embargo, como el 
+    contenedor tiene 10px, 5em equivale a 50px */
+    font-size: 5em;
+}
+
+/* rem es similar a em, pero se calcula en base al tamaño de la fuente del elemento raíz, es decir, del html y no del contenedor */
+
+/* vh y vw son unidades de medida relativas al tamaño de la ventana del navegador */
+/* vh es el 1% del alto de la ventana, es decir, si la ventana mide 1000px, 1vh equivale a 10px */
+/* vw es el 1% del ancho de la ventana */
+.cajaDiv {
+    font-size: 25px;
+    background: black;
+    width: 20vh;
+    height: 20vh;
+}
+
+/* ! Propiedades de texto */
+
+.texto {
+    font-size: 2em;
+    /* Si no encuentra la primera fuente, busca la segunda, y así sucesivamente */
+    font-family: Georgia, Times, serif;
+    /* Es el tamaño que ocupa una letra, de la base hasta su tope. El line-height nace del centro de la letra.
+     Si se le asigna 2 va a mediar 1 de la mitad para arriba y 1 de la mitad para abajo. Se observa al seleccionar la letra/texto */
+    line-height: 2;
+    /* Se puede asignar normal, bold, bolder, lighter, 100 a 900*/
+    font-weight: 600;
+}
+
+/*! Normalización de estilos */
+
+/* El navegador presetea las distancias entre los textos, el line-height, el tamaño de la fuente, etc. */
+/* Si se quiere ignorar se utiliza el normalize.css . Se instala con npm install normalize.css (se debe tener node instalado) */
+/* normalize.css setea la gran mayoria los valores por defecto de los navegadores a 0, para que no haya diferencias entre navegadores */
+/* Si se quiere modificar este seteo se debe ir al archivo normalize.css (dentro de node_modules) y modificarlo */
+/* En esta cosa, se agrego el siguiente código al archivo normalize.css *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*/
+
+/*! Box model, cajas y sus propiedades */
+
+/* Una caja se compone de 4 partes, el contenido, el padding, el border y el margin */
+/* El contenido es el texto o imagen que se muestra, pudiendose modificar con line-height, font-size, etc */
+/* El padding es el espacio entre el contenido y el borde */
+/* El border es el borde de la caja */
+/* El margin es el espacio entre las cajas */
+
+/* Las cajas pueden ser de dos tipos, de bloque o en línea */
+/* Las cajas en bloques siempre se van a ajustar al ancho de su contenedor. Siempre necesitan el ancho completo del contenedor */
+/* Las cajas en línea se van a ajustar al ancho de su contenido. Si el bloque de arriba tambien es en línea, el de abajo, va a 
+"subir" para llenar el espacio */
+/* La gran mayoría de los elementos HTML son de bloque, pero se pueden convertir en línea con display: inline */
+
+.enBloque {
+
+    display: block;
+    border: 2px solid black;
+    font-size: 1.5em;
+    background: yellowgreen;
+
+}
+
+.enLinea {
+    display: inline;
+    border: 2px solid red;
+    background: #1024d8;
+    font-size: 1.5em;
+}
+
+
+/* Luego esta la propiedad display: inline-block, que es una mezcla de las dos anteriores, es decir, se ajusta al ancho de su contenido
+y se puede modificar su ancho. Antes, si era en línea, no se podía modificar su ancho */
+
+.enLineaBloque {
+    display: inline-block;
+    border: 2px solid red;
+    background: #1024d8;
+    font-size: 1.5em;
+    width: 200px;
+}
+
+.espaciado1 {
+
+    /* 10 px en todas las direcciones */
+    padding: 10px;
+}
+
+.espaciado2 {
+    /* Arriba, derecha, abajo, izquierda (en sentido de las agujas del reloj) */
+    padding: 10px 20px 30px 40px;
+}
+
+/* El box-sizing es una propiedad que permite modificar el comportamiento de las cajas */
+
+.sinBS {
+    /* Centra el texto */
+    text-align: center;
+    background-color: rgb(51, 104, 153);
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    /* Se agrega un margen inferior, separando la caja de la siguiente 10px */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /* Se redondean las esquinas */
+    border-radius: 20%;
+    /* inset es un tipo de borde que se ve hundido */
+    /* Hay otro como outset que se ve como sobresalido, y otro como groove que se ve como un borde en 3D */
+    border: 5px inset brown;
+
+    /* Como no tiene box-sizing, el padding se suma al ancho alto de la caja, es decir, si el ancho es 100px y 
+    el padding de ambos lados 10px, el ancho y alto total del contenido es de 120px */
+}
+
+.conBS {
+
+    text-align: center;
+    background-color: rebeccapurple;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+    /* Con border-box, el padding se incluye al ancho alto de la caja, es decir, si el ancho es 100px y
+    el padding de ambos lados 10px, el ancho total es 100px */
+    box-sizing: border-box;
+    border-radius: 20%;
+    /* dashed es un tipo de borde que se ve punteado */
+    border: 5px dashed rgb(77, 165, 42);
+    /* box shadow permite agregar una sombra a la caja */
+    /* El último valor es el color de la sombra */
+    /* El cuarto valor es el desenfoque de la sombra */
+    /* Se suele poner 0px para que no haya sombra a la izquierda */
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    /* text-shadow permite agregar una sombra al texto */
+    /* No se indican los pixiles de la izquierda */
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.75);
+}
+
+/** Transform */
+
+/* Transform permite modificar la forma de un elemento HTML */
+/* Se puede modificar la rotación, la escala, la inclinación, la posición, etc */
+
+.transform {
+
+    transform: rotate(10deg);
+
 }

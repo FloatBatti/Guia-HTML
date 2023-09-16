@@ -1,53 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Segunda parte</title>
-    <link rel='stylesheet' href="estilos.css">
-</head>
-<body>
-                                 
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css" />
+  </head>
+  <body>
     <h1>Uso del iFrame</h1>
 
     <iframe src="iFrame.html" class="marcoiFrame" name="iFrame"></iframe>
 
-    <div style="text-align: center;">
-        <a href="https://gutl.jovenclub.cu/wp-content/uploads/2013/10/El+gran+libro+de+HTML5+CSS3+y+Javascrip.pdf" target="iFrame" class="botoniFrame" style="text-decoration: none;" >Cargar Libro de HTML</a>
+    <div style="text-align: center">
+      <a
+        href="https://gutl.jovenclub.cu/wp-content/uploads/2013/10/El+gran+libro+de+HTML5+CSS3+y+Javascrip.pdf"
+        target="iFrame"
+        class="botoniFrame"
+        style="text-decoration: none"
+        >Cargar Libro de HTML</a
+      >
     </div>
 
- 
     <p class="tituloForm">Formularios</p>
 
     <form method="POST">
+      <fieldset>
+        <legend>Formularios (fieldset)</legend>
+        <label for="nombre">Nombre: </label><br />
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Escribir nombre"
+          required="true"
+        /><br />
 
-        <fieldset>
-        
-            <legend>Formularios  (fieldset) </legend>
-            <label for="nombre">Nombre: </label><br>
-            <input type="text" id="nombre" name="nombre" placeholder="Escribir nombre" required="true"><br>
+        <label for="apellido">Apellido: </label><br />
+        <input
+          type="text"
+          id="apellido"
+          name="apellido"
+          placeholder="Escribir apellido"
+          required="true"
+        /><br />
 
-            <label for="apellido">Apellido: </label><br>
-            <input type="text" id="apellido" name="apellido" placeholder="Escribir apellido" required="true"><br>
+        <label for="password">Contraseña: </label><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Escribir contraseña"
+          required="true"
+        /><br />
 
-            <label for="password">Contraseña: </label><br>
-            <input type="password" id="password" name="password" placeholder="Escribir contraseña" required="true"><br>
+        <label for="email">Email: </label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Ingrese su mail"
+          required="true"
+        /><br />
 
-            <label for="email">Email: </label><br>
-            <input type="email" id="email" name="email" placeholder="Ingrese su mail" required="true"><br>
+        <label for="edad">Edad: </label><br />
+        <input
+          type="number"
+          id="edad"
+          name="edad"
+          placeholder="Ingrese su edad"
+          required="true"
+        /><br />
 
-            <label for="edad">Edad: </label><br>
-            <input type="number" id="edad" name="edad" placeholder="Ingrese su edad" required="true"><br>
+        <label for="altura">Altura: </label><br />
+        <input
+          type="number"
+          id="altura"
+          name="altura"
+          placeholder="Ingrese su altura"
+          required="true"
+          step="any"
+        /><br /><br />
 
-            <label for="altura">Altura: </label><br>
-            <input type="number" id="altura" name="altura" placeholder="Ingrese su altura" required="true" step="any"><br><br>
-
-            <input type="submit" value="Enviar"> <br><br>
-
-        </fieldset>
-
+        <input type="submit" value="Enviar" /> <br /><br />
+      </fieldset>
     </form>
 
-</body>
+    <h1>CSS al detalle</h1>
+
+    <div class="contRelativo">
+      <p class="relative">
+        La unidad em equivale a 16 pixeles, a menos que se herede de otra medida
+      </p>
+    </div>
+
+    <div class="cajaParrafo">.</div>
+
+    <p class="texto">Propiedades de los textos</p>
+
+    <p class="enBloque">Etiqueta p en bloque</p>
+    <p class="enLinea espaciado">Etiqueta p en linea</p>
+    <p class="enLinea espaciado">Otra Etiqueta p en linea</p>
+    <p class="enLineaBloque espaciado">Etiqueta p en linea y bloque</p>
+    <p class="enLineaBloque espaciado">Otra Etiqueta p en linea y bloque</p>
+
+    <p class="sinBS">Titulo sin box-sizing</p>
+    <p class="conBS transform">Titulo con box-sizing</p>
+  </body>
 </html>
