@@ -1,0 +1,46 @@
+body{
+    background-color: beige;
+}
+
+.header{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+}
+.header-links{
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+.header-link{
+    text-decoration: none;
+    margin: 0px 15px 0px 15px;
+    transition: all 0.3s;
+}
+
+.header-link:hover{
+    font-size: 23px;  
+    color: blueviolet;
+}
+
+.main{
+    width: 100%;
+}
+
+.slides{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.slide1 .slide2 .slide3{
+    width: 20px;
+    border: 2px solid rgb(255, 0, 0);
+}
+
+.slides img{
+    object-fit: scale-down;
+    width: 200px;
+}

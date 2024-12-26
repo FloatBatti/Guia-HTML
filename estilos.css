@@ -181,7 +181,7 @@ a.elementoInicio {
 /* Las medidas relativas se calculan en base a la medida de otro elemento, puede ser em o rem */
 
 .contRelativo {
-    /* El contendor es el que define el valor del em. Si el contenedor tiene 10px, 1em equivale a10px */
+    /* El contendor es el que define el valor del em. Si el contenedor tiene 10px, 1em equivale a 10px */
     font-size: 10px;
 }
 
@@ -243,6 +243,7 @@ a.elementoInicio {
 /* Las cajas en línea se van a ajustar al ancho de su contenido. Si el bloque de arriba tambien es en línea, el de abajo, va a 
 "subir" para llenar el espacio */
 /* La gran mayoría de los elementos HTML son de bloque, pero se pueden convertir en línea con display: inline */
+/*display es el modo de visualización (en linea, en bloque, por grillas (grid), sin visualizar (none) ).
 
 .enBloque {
 
@@ -262,7 +263,7 @@ a.elementoInicio {
 
 
 /* Luego esta la propiedad display: inline-block, que es una mezcla de las dos anteriores, es decir, se ajusta al ancho de su contenido
-y se puede modificar su ancho. Antes, si era en línea, no se podía modificar su ancho */
+y se puede modificar su ancho. Antes, si era en línea, no se podía modificar su ancho. */
 
 .enLineaBloque {
     display: inline-block;
@@ -289,7 +290,7 @@ y se puede modificar su ancho. Antes, si era en línea, no se podía modificar s
     /* Centra el texto */
     text-align: center;
     background-color: rgb(51, 104, 153);
-    padding: 10px;
+    padding-bottom: 50px;
     height: 100px;
     width: 100px;
     /* Se agrega un margen inferior, separando la caja de la siguiente 10px */
@@ -309,12 +310,13 @@ y se puede modificar su ancho. Antes, si era en línea, no se podía modificar s
 
     text-align: center;
     background-color: rebeccapurple;
-    padding: 10px;
+    padding-bottom: 50px;
     height: 100px;
     width: 100px;
     margin-bottom: 10px;
-    /* Con border-box, el padding se incluye al ancho alto de la caja, es decir, si el ancho es 100px y
-    el padding de ambos lados 10px, el ancho total es 100px */
+    /* Con border-box, el padding se incluye al ancho alto de la caja, es decir, siendo el padding de abajo de 
+    50px y el alto de 100px, en vez de medir 150px mide 100px. Esto es siempre y cuando el contenido junto al
+    padding no exedean el ancho o alto */
     box-sizing: border-box;
     border-radius: 20%;
     /* dashed es un tipo de borde que se ve punteado */
@@ -329,6 +331,29 @@ y se puede modificar su ancho. Antes, si era en línea, no se podía modificar s
     text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.75);
 }
 
+.outline{
+
+    text-align: center;
+    background-color: rebeccapurple;
+    height: 100px;
+    width: 100px;
+    /* Con margin auto se centra, es decir, se agrega espacio equitativamente en su izquierda y su derecha*/
+    margin:auto;
+    /* outline remarca una caja, sin que que no se cuente como parte de la caja, por eso tapa la de abajo.*/
+    outline: 9px solid red;
+
+}
+
+.sinOutline{
+
+    text-align: center;
+    background-color: rebeccapurple;
+    height: 100px;
+    width: 100px;
+    /* Con margin auto se centra, es decir, se agrega espacio equitativamente en su izquierda y su derecha*/
+    margin:auto;
+}
+
 /** Transform */
 
 /* Transform permite modificar la forma de un elemento HTML */
@@ -336,6 +361,311 @@ y se puede modificar su ancho. Antes, si era en línea, no se podía modificar s
 
 .transform {
 
-    transform: rotate(10deg);
+    margin-left: 10px;
+    transform: rotate(15deg);
+}
 
+/** Position */
+
+/* Hay diferentes tipos de posiciones:
+
+    - static: El que se pone por defecto. Se considera que no está posicionado.
+
+    - relative: El espacio que antes tenía se sigue conservado/reservado. los px que se mueva con esta propiedad 
+    siempre son desde su posición inicial. Con esta propidad se utiliza z-index, dandole el orden o prioridad a 
+    un caja para posicionarse por detras o delante de otra. Siempre el que tenga el index más alto se posiciona
+    más adelante. Un elemento padre HTLM siempre se va a posicionar debajo de u hijo aunque tenga un z-index mayor.
+    Para solucionar eso se le idica -1 el z-index del elemento hijo.
+   
+    - absolute: Es igual a relative pero se elimina el espacio reservado, es decir, esa "estructura invisible" que
+    hace que los objetos no se "fusionen". Si la caja de arriba tiene este tipo de position, la de abajo sube y se
+    ubica en su lugar hasta hacer tope con otra caja no absolute. Si a una caja con posicion absoluta le damos la 
+    propiedad top o left, va a tomar como referencia el view-port, es decir, los bordes de la pantalla, y no los de 
+    las cajas a su alrededor. Si no le ponemos top se queda haciendo tope con otras cajas que interactuen con la misma, 
+    si le ponemos por ejemplo top: 10px sube hasta el borde superior de la pantalla a una distancia de 10px de esta.
+    Si una caja hija con position absolut esta dentro de otra padre posicionada (cualquier position menos static), al poner 
+    rigth: 0, se pega al borde derecho del padre, al poner buttom:0 se pega en el borde inferior y asi con los demás lados y 
+    sus combinaciones. Si el contenedor padre no estría posicionado, la caja hija tomaría como punto de referencia el view-port.
+    
+    - fixed: Es igual que absolute pero se queda fijado, utilizando posicionamiento absolute.
+    - sticky: Es como una mezcla entre fixed y relative, ya que conserva su espacio (no como en absolut). Con esta posición, los
+    indicadores top, left, buttom o rigth no sirven para mover la caja, sino para indicarle en que punto se pasará a tener un
+    comportamiento similiar a fixed.
+    Con los indicadores le decimos a partir de cuando (una vez interactuado con su caja) se va a quedar estatico, es decir, si le ponemos 
+    top:10, al scroller y encontrarnos con el borde de su caja vamos a bajar 10 pixeles mas y ahi se va a pegar, manteniendo su posición 
+    a medida que bajamos. Si subimos, cuando volvamos a su posición inicial se queda ahí y no sigue subiendo.
+    Si no se indica la top o left, se fija. Para rigth y buttom se utilizan los números negativos.
+    Para moverlo se utilizan los margin.
+
+*/
+.caja{
+    width: 120px;
+    height: 120px;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 40px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.caja-1{
+    background-color: red;
+}
+
+.caja-2{
+    background-color: green;
+    position: relative;
+    /* Con top se indica los pixeles a moverse hacia abajo */
+    /* para bottom o rigth se ponen los pixeles negativos, es decir, si queremos que suba 10px,
+    se pondría, top: -10px */
+    top: 30px; 
+    left: 15px;
+    z-index: 1;
+}
+
+.caja-3{
+    background-color: blue;
+    position: relative;
+    z-index: 2;
+}
+
+.caja-4{
+    background-color: yellow;
+    position: absolute;
+    /* Opacity da transparencia, va de 0 a 1 */
+    opacity: 0.5;
+    left: 40px;
+}
+
+.caja-5{
+    background-color: blueviolet;
+}
+
+.cajon{
+    /* El primer valor le da el margin top*/
+    margin: 50px auto;
+    position: relative;
+    border: 4px solid red;
+    height: 300px;
+    width: 300px;
+    background: #42855B;
+}
+
+.cajita{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.cajita-1{
+    top: 0;
+    background-color: purple;
+
+}
+
+.cajita-2{
+    background-color: yellow;
+    right: 0;
+
+}
+
+.cajita-3{
+    background-color: blue;
+    bottom: 0;
+}
+
+
+.cajita-4{
+    background-color: red;
+    bottom: 0;
+    right: 0;
+}
+
+.cajita-5{
+    background-color: rgb(145, 255, 0);
+    /*Para centrar se ponen todos en 0 y margin en auto */
+    bottom: 0;
+    right: 0;
+    top:0;
+    left: 0;
+    margin: auto;
+}
+
+.fotoWp{
+    position: fixed;
+    z-index: 999;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+}
+
+/*! Overflow (scroll) */
+
+/* Overflow indica que pasa con el contenido que sobresale de una caja. Los distintos valores que puede tomar son:
+
+    -inherit: Es la puesta por defecto, haciendo que se sobresalga el contenido.
+    -auto: Detecta si el contenido sobresale y le da un scroll a la caja.
+    -scroll: Pone obligatoriamente una barra de scroll aunque no sea necesario.
+    -hidden: Oculta el scroll y no deja desplazarnos.
+*/
+.pGrande{
+    width: 200px;
+    height: 150px;
+    border: 5px solid black;
+    margin: auto;
+    overflow: auto;
+    background-color: gray;
+}
+
+/*! Pseudo elementos */
+
+/* Se indican con :: luego del elemento o nombre de la clase. Hacen referencias a elementos que no son propios del DOM (algunos si), es decir,
+elementos que no poseen una etiqueta que los identifiquen, por ejemplo, el placeholder, la primer linea de un texto, la selección de algo etc.
+Se le agregan propiedades como a los elementos normales.
+
+    -first-line: Primera linea de un texto.
+    -first-letter: Primer letra de un texto.
+    -placeholder: Asigna propiedades al placeholder.
+    -selection: Cuando se selecciona un elemento con el cursor.
+    -after: Lo elementos after son hijos del elemento al que se le aplica. Se "crean" luego del contenido al que se aplican Necesitan la propiedad 
+    content si o si y son elementos inline. No son elementos del DOM, por eso no nos deja seleccionarlo.
+    -before: Lo mismo que after pero se "crea" antes.
+*/
+
+.miInput::placeholder{
+    color: red;
+    font-size: 1em;
+}
+
+.miInput::selection{
+    color: red;
+    background-color: yellow;
+}
+
+.elementAfter::before{
+    color: #42032C;
+    content: "Tengo ";
+}
+
+.elementAfter::after{
+    color: #D36B00;
+    content: " hambre";
+
+}
+
+/*! Pseudo clases */
+
+/* Al igual que los pseudo elementos se aplica a un tag o a un selector. La diferencia es que se usa para "escuchar un elemento", por ejemplo,
+cuando se pasa el mouse encima, se visita un link, cuando no, etc. Otra difenrencia es que se indica con : y no :: Algunos son:
+
+    -hover: Le ototga propiedades a los elementos cuando se pasa por encima de ellos con el mouse.
+    -link: Le otroga propiedades a los links si no fueron visitados.
+    -visited: Le otroga propiedades a los links si ya fueron visitados.
+    -active: Le otorga propiedades a los elementos mientras se mantenga el click en ellos. Cuando se deja de hacer se salen las propiedades.
+    -focus: Le otroga propiedades a los elementos que están siendo enfocados, por ejemplo cuando seleccionamos un input.
+    -lang: Le otroga propiedades a los elementos cuando se encuentran en un determinado idioma. Se especifica en el parámetro :lang(es). Cada
+    idioma tiene un código. No reconoce el lenguaje, sino que se fija en el atributo 'lang' del elemento HTML.
+
+*/
+
+.fotoWp:hover{
+    /* Aumenta la escala en 1.1*/
+    transform: scale(1.1);
+    /* Especifico el tiempo en que ocurre la transformación*/
+    transition: transform 0.5s;
+}
+
+.barrita{
+    height: 50px;
+    width: 120px;
+    background: #1024d8;
+    margin: 10px;
+    /* Cuando ocurra cualquier transformación se va a realizar en 1s */
+    transition: all 1s;
+    /* Lo siguiente está en la parte de cursor, más abajo */
+    cursor: wait;
+}
+
+.barrita:active{
+    width: 600px;
+    background-color: #42855B;
+}
+
+/*! Object-Fit y object-position*/
+
+/* Object-Fit le da propiedades a la imagen. Sus valores pueden ser:
+
+    -contain: Mantiene las resolucuines ajustandose al tamaño del contenido (un elemento img dentro de un div), para no deformar la imagen,
+    dejando espacios vacios.
+    -cover: La resolución se ajusta al contenido sin dejar espacios vaciós. La cuestión es que a veces la imagen no se va a ver completa,
+    a menos que se agrande el contenedor ( en el caso que el tamaño de la imagen supere a la caja que la contiene). 
+    -none: No se realizan ajustes ni se deforma la imagen. La imagen queda en el contenedor con su tamaño original.
+    -scale-down: Compara none y contain y deja la propiedad donde la resolución sea más chica.
+
+Oject-position inica que lado "predomina más". Por defecto la imagen se muestra desde el centro, si indicamos object-position: left, se muestra
+desde la izquierda, pudiendo cortar partes del lado derecho que excede la caja. Si la imagen es del mismo tamaño que la caja, estás propiedades
+no hacen falta.
+*/
+
+.imagen{
+    height: 100px;
+    width: 300px;
+    display: inline-block;
+}
+
+/* accedo a los elementos img dentro de la caja con la clase .imagen */
+.imagen img{
+
+    height: 100%;
+    width: 100%;
+    border: 2px solid red;
+    object-fit: scale-down;
+    
+}
+
+/*! Cursor */
+
+/* Esta propiedad cambia el estilo del cursor cuando este se encuentra dentro de una caja. Por ejemplo, si le damos esta propiedad al body,
+estaríamos cambiando el cursor en todos lados. Se le puede agregar a las pseudo clases, por ejemplo, cambiar el cursor cuando se está presionando
+un elemento con :active (ver más arriba con la clase .barrita) . */
+
+/*! Float */
+
+/* Hace que los demás elementos "floten" al rededor del que aplica esta propiedad, como si el elemento no existiera */
+
+.float{
+    float: right;
+}
+.pLorem{
+    /*Como la imagen es flotante, toma como referencia el borde de la pantalla*/
+    padding-right: 310px;
+}
+
+/*! Animaciones */
+
+.cuadrado{
+    width: 150px;
+    height: 150px;
+    background: #aaa;
+    animation-name: mianimacion;
+    animation-duration: 4s;
+    animation-delay: 3s;
+    position: relative;
+    animation-direction: reverse;
+    animation-timing-function: ease;
+    animation-iteration-count: 3;
+
+    /* delay, timing-function y duration tambien se usan con transition (se pone en lugar de animation */
+}
+
+@keyframes mianimacion{
+
+    0%{background: #aaa; left: 0; top: 0;}
+    25%{background: yellow; left: 300px; top:0}
+    50%{background: red;left: 300px; top:300px}
+    75%{background: green;left: 0px; top:300px}
+    100%{background: blue;;left: 0px; top:0}
 }
